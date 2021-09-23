@@ -89,7 +89,7 @@ class TranslatedFields(object):
         if not model._meta.abstract:
             # If this class is abstract, we must not contribute management fields
             attrs['master'] = MasterKey(model, related_name=related_name,
-                                        editable=False, on_delete=models.CASCADE)
+                                        editable=False, on_delete=models.CASCADE, null=True)
             if 'language_code' not in attrs:    # allow overriding
                 attrs['language_code'] = models.CharField(max_length=15, db_index=True)
 
